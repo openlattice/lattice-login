@@ -107,7 +107,7 @@ export function hasAuthTokenExpired(idTokenOrExpiration :?string | number) :bool
   }
 
   try {
-    if (typeof idTokenOrExpiration === 'number' && isFinite(idTokenOrExpiration)) {
+    if (typeof idTokenOrExpiration === 'number' && Number.isFinite(idTokenOrExpiration)) {
       // idTokenOrExpiration is the expiration
       return moment().isAfter(idTokenOrExpiration);
     }
