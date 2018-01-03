@@ -7,7 +7,7 @@ import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { faCheckCircle } from '@fortawesome/fontawesome-pro-light';
-import { AuthActionFactory, AuthUtils } from 'lattice-auth';
+import { AuthActionFactory } from 'lattice-auth';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
