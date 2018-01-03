@@ -7,6 +7,13 @@ import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { faCheckCircle } from '@fortawesome/fontawesome-pro-light';
+import { AuthActionFactory, AuthUtils } from 'lattice-auth';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import StyledButton from '../../components/buttons/StyledButton';
+
+const { logout } = AuthActionFactory;
 
 /*
  * styled components
@@ -36,11 +43,28 @@ const LoginSuccessCheck = styled.div`
   display: flex;
 `;
 
-const AppContainer = () => {
+const StyledActionButton = StyledButton.extend`
+  position: absolute;
+  right: 50px;
+  top: 50px;
+`;
+
+/*
+ * types
+ */
+
+type Props = {
+  actions :{
+    logout :Function;
+  };
+};
+
+const AppContainer = (props :Props) => {
 
   return (
     <ContainerOuterWrapper>
       <ContainerInnerWrapper>
+        <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
         <LoginSuccessCheck>
           <FontAwesomeIcon icon={faCheckCircle} size="4x" />
         </LoginSuccessCheck>
@@ -50,4 +74,11 @@ const AppContainer = () => {
   );
 };
 
-export default AppContainer;
+function mapDispatchToProps(dispatch :Function) :Object {
+
+  return {
+    actions: bindActionCreators({ logout }, dispatch)
+  };
+}
+
+export default connect(null, mapDispatchToProps)(AppContainer);
