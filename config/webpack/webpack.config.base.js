@@ -16,7 +16,7 @@ export default function baseWebpackConfig(env) {
    * constants
    */
 
-  const BASE_PATH = `/${env.basePath || 'edm'}/`;
+  const BASE_PATH = `/${env.basePath || 'login'}/`;
 
   /*
    * loaders

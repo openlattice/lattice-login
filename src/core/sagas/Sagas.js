@@ -2,9 +2,8 @@
  * @flow
  */
 
+import { AuthSagas } from 'lattice-auth';
 import { fork } from 'redux-saga/effects';
-
-import * as AuthSagas from '../auth/AuthSagas';
 
 export default function* sagas() :Generator<*, *, *> {
 
