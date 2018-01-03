@@ -4,35 +4,50 @@
 
 import React from 'react';
 
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import { login, logout } from '../../core/auth/AuthActionFactory';
+import { faCheckCircle } from '@fortawesome/fontawesome-pro-light';
 
 /*
  * styled components
  */
 
-const AppWrapper = styled.div`
+const ContainerOuterWrapper = styled.div`
+  align-items: center;
   display: flex;
-  flex-direction: column;
+  flex: 1 0 auto;
+  flex-direction: row;
   height: 100%;
-  min-width: 800px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+`;
+
+const ContainerInnerWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  width: 900px;
+`;
+
+const LoginSuccessCheck = styled.div`
+  color: #7dd322;
+  display: flex;
 `;
 
 const AppContainer = () => {
 
   return (
-    <AppWrapper>OpenLattice</AppWrapper>
+    <ContainerOuterWrapper>
+      <ContainerInnerWrapper>
+        <LoginSuccessCheck>
+          <FontAwesomeIcon icon={faCheckCircle} size="4x" />
+        </LoginSuccessCheck>
+        <p>Success! You are logged in to OpenLattice.</p>
+      </ContainerInnerWrapper>
+    </ContainerOuterWrapper>
   );
 };
 
-function mapDispatchToProps(dispatch :Function) :Object {
-
-  return {
-    actions: bindActionCreators({ login, logout }, dispatch)
-  };
-}
-
-export default connect(null, mapDispatchToProps)(AppContainer);
+export default AppContainer;
