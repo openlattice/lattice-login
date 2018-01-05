@@ -22,6 +22,7 @@ import * as Routes from './core/router/Routes';
 // injected by Webpack.DefinePlugin
 declare var __AUTH0_CLIENT_ID__ :string;
 declare var __AUTH0_DOMAIN__ :string;
+declare var __ENV_DEV__ :boolean;
 
 const {
   AuthRoute,
@@ -72,7 +73,7 @@ LatticeAuth.configure({
     title: 'OpenLattice'
   },
   authToken: AuthUtils.getAuthToken(),
-  baseUrl: 'localhost'
+  baseUrl: (__ENV_DEV__) ? 'localhost' : 'production'
 });
 
 /*

@@ -2,6 +2,7 @@
   "name": "lattice-login",
   "version": "0.0.0",
   "homepage": "https://github.com/openlattice/lattice-login",
+  "description": "OpenLattice central login",
   "author": {
     "name": "OpenLattice, Inc.",
     "email": "support@openlattice.com",
@@ -84,10 +85,12 @@
     "stylelint-processor-styled-components": "^1.0.0",
     "uglifyjs-webpack-plugin": "^1.1.4",
     "webpack": "^3.8.0",
-    "webpack-dev-server": "^2.9.0"
+    "webpack-dev-server": "^2.9.0",
+    "webpack-hot-middleware": "^2.21.0"
   },
   "scripts": {
     "app": "better-npm-run webpack-dev-server",
+    "build:dev": "better-npm-run build:dev",
     "build:prod": "better-npm-run build:prod",
     "clean": "rimraf build/*",
     "flow": "flow",
@@ -98,6 +101,12 @@
     "test:watch": "jest --config config/test/jest.config.js --watch"
   },
   "betterScripts": {
+    "build:dev": {
+      "command": "webpack --config config/webpack/webpack.config.babel.js",
+      "env": {
+        "BUILD": "development"
+      }
+    },
     "build:prod": {
       "command": "webpack --config config/webpack/webpack.config.babel.js",
       "env": {
