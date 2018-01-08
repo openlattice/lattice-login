@@ -55,24 +55,21 @@ const StyledActionButton = StyledButton.extend`
 
 type Props = {
   actions :{
-    logout :Function;
+    logout :() => void;
   };
 };
 
-const AppContainer = (props :Props) => {
-
-  return (
-    <ContainerOuterWrapper>
-      <ContainerInnerWrapper>
-        <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
-        <LoginSuccessCheck>
-          <FontAwesomeIcon icon={faCheckCircle} size="4x" />
-        </LoginSuccessCheck>
-        <p>Success! You are logged in to OpenLattice.</p>
-      </ContainerInnerWrapper>
-    </ContainerOuterWrapper>
-  );
-};
+const AppContainer = (props :Props) => (
+  <ContainerOuterWrapper>
+    <ContainerInnerWrapper>
+      <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
+      <LoginSuccessCheck>
+        <FontAwesomeIcon icon={faCheckCircle} size="4x" />
+      </LoginSuccessCheck>
+      <p>Success! You are logged in to OpenLattice.</p>
+    </ContainerInnerWrapper>
+  </ContainerOuterWrapper>
+);
 
 function mapDispatchToProps(dispatch :Function) :Object {
 
