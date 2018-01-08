@@ -16,7 +16,7 @@ export default function baseWebpackConfig(env) {
    * constants
    */
 
-  const BASE_PATH = `/${env.basePath || 'login'}`;
+  const BASE_PATH = `/${env.basePath || 'login'}/`;
 
   /*
    * loaders
@@ -38,7 +38,8 @@ export default function baseWebpackConfig(env) {
     use: [{
       loader: 'file-loader',
       options: {
-        name: `${APP_PATHS.REL.STATIC_ASSETS_IMAGES}/[name].[hash:8].[ext]`
+        name: '[name].[hash:8].[ext]',
+        outputPath: `${APP_PATHS.REL.STATIC_ASSETS_IMAGES}/`
       }
     }]
   };
