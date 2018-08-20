@@ -78,11 +78,14 @@ LatticeAuth.configure({
 const routerHistory = initializeRouterHistory();
 const reduxStore = initializeReduxStore(routerHistory);
 
-ReactDOM.render(
-  <Provider store={reduxStore}>
-    <ConnectedRouter history={routerHistory}>
-      <AuthRoute path={Routes.ROOT} component={AppContainer} />
-    </ConnectedRouter>
-  </Provider>,
-  document.getElementById('app')
-);
+const APP_ROOT_NODE = document.getElementById('app');
+if (APP_ROOT_NODE) {
+  ReactDOM.render(
+    <Provider store={reduxStore}>
+      <ConnectedRouter history={routerHistory}>
+        <AuthRoute path={Routes.ROOT} component={AppContainer} />
+      </ConnectedRouter>
+    </Provider>,
+    APP_ROOT_NODE
+  );
+}
