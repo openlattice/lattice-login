@@ -4,9 +4,9 @@
 
 import React from 'react';
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
-import { faCheckCircle } from '@fortawesome/fontawesome-pro-light';
+import { faCheckCircle } from '@fortawesome/pro-light-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthActionFactory } from 'lattice-auth';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -59,14 +59,18 @@ type Props = {
   };
 };
 
-const AppContainer = (props :Props) => (
+const AppContainer = ({ actions } :Props) => (
   <ContainerOuterWrapper>
     <ContainerInnerWrapper>
-      <StyledActionButton onClick={props.actions.logout}>Logout</StyledActionButton>
+      <StyledActionButton onClick={actions.logout}>
+        Logout
+      </StyledActionButton>
       <LoginSuccessCheck>
         <FontAwesomeIcon icon={faCheckCircle} size="4x" />
       </LoginSuccessCheck>
-      <p>Success! You are logged in to OpenLattice.</p>
+      <p>
+        Success! You are logged in to OpenLattice.
+      </p>
     </ContainerInnerWrapper>
   </ContainerOuterWrapper>
 );
