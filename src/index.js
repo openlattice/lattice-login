@@ -28,7 +28,9 @@ const {
 } = LatticeAuth;
 
 /* eslint-disable */
-createGlobalStyle`${normalize()}`;
+createGlobalStyle`
+  ${normalize()}
+`;
 
 // TODO: move styling into core/style
 // TODO: define style defaults and themes
