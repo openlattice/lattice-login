@@ -25,4 +25,4 @@ before_script:
   - npm run test:travis
 
 script:
-  - npm run build:prod
+  - npm run build:dev
