@@ -28,13 +28,13 @@ const {
 } = LatticeAuth;
 
 /* eslint-disable */
-createGlobalStyle`
+const NormalizeCSS = createGlobalStyle`
   ${normalize()}
 `;
 
 // TODO: move styling into core/style
 // TODO: define style defaults and themes
-createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   html,
   body {
     background-color: #f9fcff;
@@ -83,9 +83,13 @@ const APP_ROOT_NODE = document.getElementById('app');
 if (APP_ROOT_NODE) {
   ReactDOM.render(
     <Provider store={reduxStore}>
-      <ConnectedRouter history={routerHistory}>
-        <AuthRoute path={Routes.ROOT} component={AppContainer} />
-      </ConnectedRouter>
+      <>
+        <ConnectedRouter history={routerHistory}>
+          <AuthRoute path={Routes.ROOT} component={AppContainer} />
+        </ConnectedRouter>
+        <NormalizeCSS />
+        <GlobalStyle />
+      </>
     </Provider>,
     APP_ROOT_NODE
   );
