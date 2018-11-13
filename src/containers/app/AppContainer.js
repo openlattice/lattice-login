@@ -43,7 +43,7 @@ const LoginSuccessCheck = styled.div`
   display: flex;
 `;
 
-const StyledActionButton = StyledButton.extend`
+const StyledActionButton = styled(StyledButton)`
   position: absolute;
   right: 50px;
   top: 50px;
