@@ -9,7 +9,7 @@ import LatticeAuth from 'lattice-auth';
 import { normalize } from 'polished';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import AppContainer from './containers/app/AppContainer';
 import initializeReduxStore from './core/redux/ReduxStore';
@@ -28,11 +28,11 @@ const {
 } = LatticeAuth;
 
 /* eslint-disable */
-injectGlobal`${normalize()}`;
+createGlobalStyle`${normalize()}`;
 
 // TODO: move styling into core/style
 // TODO: define style defaults and themes
-injectGlobal`
+createGlobalStyle`
   html,
   body {
     background-color: #f9fcff;
