@@ -82,4 +82,7 @@ function mapDispatchToProps(dispatch :Function) :Object {
   };
 }
 
+// Missing type annotation for `CP`. `CP` is a type parameter declared in function type [1] and was implicitly
+// instantiated at call of `connect` [2].
+// $FlowFixMe
 export default connect(null, mapDispatchToProps)(AppContainer);
