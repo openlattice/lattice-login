@@ -39,7 +39,7 @@
     "loglevel": "^1.6.0",
     "moment": "^2.22.0",
     "polished": "^2.0.1",
-    "react": "~16.4.0",
+    "react": "~16.7.0",
     "react-dom": "~16.4.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
