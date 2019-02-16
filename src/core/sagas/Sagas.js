@@ -2,18 +2,18 @@
  * @flow
  */
 
+import { all, fork } from '@redux-saga/core/effects';
 import { AuthSagas } from 'lattice-auth';
-import { all, fork } from 'redux-saga/effects';
 
 export default function* sagas() :Generator<*, *, *> {
 
   yield all([
-    // AuthSagas
+    // "lattice-auth" Sagas
     fork(AuthSagas.watchAuthAttempt),
     fork(AuthSagas.watchAuthSuccess),
     fork(AuthSagas.watchAuthFailure),
     fork(AuthSagas.watchAuthExpired),
     fork(AuthSagas.watchLogin),
-    fork(AuthSagas.watchLogout)
+    fork(AuthSagas.watchLogout),
   ]);
 }
