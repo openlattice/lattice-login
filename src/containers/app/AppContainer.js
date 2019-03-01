@@ -7,13 +7,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { faCheckCircle } from '@fortawesome/pro-light-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { AuthActionFactory } from 'lattice-auth';
+import { AuthActions } from 'lattice-auth';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import StyledButton from '../../components/buttons/StyledButton';
-
-const { logout } = AuthActionFactory;
 
 /*
  * styled components
@@ -75,14 +73,14 @@ const AppContainer = ({ actions } :Props) => (
   </ContainerOuterWrapper>
 );
 
-function mapDispatchToProps(dispatch :Function) :Object {
 
-  return {
-    actions: bindActionCreators({ logout }, dispatch)
-  };
-}
+const mapDispatchToProps = (dispatch :Function) :Object => ({
+  actions: bindActionCreators({
+    logout: AuthActions.logout,
+  }, dispatch)
+});
 
+export default connect(null, mapDispatchToProps)(AppContainer);
 // Missing type annotation for `CP`. `CP` is a type parameter declared in function type [1] and was implicitly
 // instantiated at call of `connect` [2].
 // $FlowFixMe
-export default connect(null, mapDispatchToProps)(AppContainer);
