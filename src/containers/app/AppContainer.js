@@ -78,7 +78,7 @@ const AppContainer = ({ actions } :Props) => (
 );
 
 
-const mapDispatchToProps = (dispatch) :ActionProps => ({
+const mapDispatchToProps = (dispatch :Function) :ActionProps => ({
   actions: bindActionCreators({
     logout: AuthActions.logout,
   }, dispatch)
