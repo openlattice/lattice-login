@@ -80,7 +80,7 @@ const AppContainer = ({ actions } :Props) => (
 
 const mapDispatchToProps = (dispatch) :ActionProps => ({
   actions: bindActionCreators({
-    testing: AuthActions.logout,
+    logout: AuthActions.logout,
   }, dispatch)
 });
 
