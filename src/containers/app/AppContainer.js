@@ -51,11 +51,15 @@ const StyledActionButton = styled(StyledButton)`
  * types
  */
 
-type Props = {
-  actions :{
+type ActionProps = {|
+  actions :{|
     logout :() => void;
-  };
-};
+  |};
+|};
+
+type Props = {|
+  ...ActionProps;
+|};
 
 const AppContainer = ({ actions } :Props) => (
   <ContainerOuterWrapper>
@@ -74,13 +78,10 @@ const AppContainer = ({ actions } :Props) => (
 );
 
 
-const mapDispatchToProps = (dispatch :Function) :Object => ({
+const mapDispatchToProps = (dispatch) :ActionProps => ({
   actions: bindActionCreators({
-    logout: AuthActions.logout,
+    testing: AuthActions.logout,
   }, dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(AppContainer);
-// Missing type annotation for `CP`. `CP` is a type parameter declared in function type [1] and was implicitly
-// instantiated at call of `connect` [2].
-// $FlowFixMe
+export default connect<Props, {||}, {||}, ActionProps, _, _>(null, mapDispatchToProps)(AppContainer);
