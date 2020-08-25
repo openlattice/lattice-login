@@ -35,7 +35,7 @@
     "history": "~4.10.0",
     "immutable": "4.0.0-rc.9",
     "lattice": "0.79.0",
-    "lattice-auth": "0.21.2",
+    "lattice-auth": "0.22.0",
     "lattice-sagas": "0.54.0",
     "lodash": "~4.17.10",
     "loglevel": "~1.6.0",
