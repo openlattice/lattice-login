@@ -38,7 +38,7 @@
     "lattice-auth": "0.22.0",
     "lattice-sagas": "0.54.0",
     "lodash": "~4.17.10",
-    "loglevel": "~1.6.0",
+    "loglevel": "~1.7.0",
     "polished": "~3.6.0",
     "react": "~16.13.0",
     "react-dom": "~16.13.0",
