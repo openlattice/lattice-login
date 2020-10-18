@@ -80,7 +80,7 @@
     "flow-bin": "~0.132.0",
     "html-webpack-plugin": "~4.4.1",
     "import-sort-style-openlattice": "~0.1.0",
-    "jest": "~26.4.1",
+    "jest": "~26.5.3",
     "npm-run-all": "~4.1.0",
     "rimraf": "~3.0.0",
     "stylelint": "~13.7.1",
