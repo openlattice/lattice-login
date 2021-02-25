@@ -1,18 +1,20 @@
 {
-  "parser": "babel-eslint",
-  "extends": [
-    "airbnb",
-    "plugin:flowtype/recommended"
-  ],
-  "plugins": [
-    "flowtype",
-    "jest",
-    "react"
-  ],
   "env": {
     "browser": true,
     "jest": true
   },
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "flowtype",
+    "import",
+    "jest",
+    "react",
+    "react-hooks"
+  ],
   "settings": {
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true
@@ -69,6 +71,7 @@
           "OrderedList",
           "Map",
           "OrderedMap",
+          "Seq",
           "Set",
           "OrderedSet",
           "SortableContainer",
@@ -97,6 +100,7 @@
       {
         "devDependencies": [
           "config/**",
+          "src/utils/testing/**",
           "**/*.test.js"
         ]
       }
@@ -117,6 +121,15 @@
 
     "jsx-a11y/href-no-hash": "off",
 
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+
+    "react/default-props-match-prop-types": [
+      "error",
+      {
+        "allowRequiredDefaults": true
+      }
+    ],
     "react/forbid-prop-types": "warn",
     "react/jsx-closing-bracket-location": [
       "error",
@@ -133,13 +146,17 @@
     ],
     "react/jsx-indent-props": ["error", 4],
     "react/jsx-one-expression-per-line": "warn",
+    "react/no-did-update-set-state": "warn",
     "react/prefer-stateless-function": "warn",
+    "react/prop-types": "warn",
     "react/require-default-props": [
       "error",
       {
-        "forbidDefaultForRequired": false,
+        "forbidDefaultForRequired": false
       }
     ],
-    "react/sort-comp": "off"
+    "react/sort-comp": "off",
+    "react/state-in-constructor": ["warn", "always"],
+    "react/static-property-placement": ["error", "static public field"]
   }
 }
