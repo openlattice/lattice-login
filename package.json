@@ -37,7 +37,7 @@
     "lattice": "~0.89.2",
     "lattice-auth": "0.22.0",
     "polished": "~4.1.1",
-    "react": "~16.14.0",
+    "react": "~17.0.1",
     "react-dom": "~16.14.0",
     "react-redux": "~7.2.0",
     "react-router": "~5.2.0",
