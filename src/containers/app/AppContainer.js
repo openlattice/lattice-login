@@ -2,22 +2,13 @@
  * @flow
  */
 
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import styled from 'styled-components';
-import { faCheckCircle } from '@fortawesome/pro-light-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthActions } from 'lattice-auth';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 
-import StyledButton from '../../components/buttons/StyledButton';
-
-/*
- * styled components
- */
-
-const ContainerOuterWrapper = styled.div`
+const ContainerWrapper = styled.div`
   align-items: center;
   display: flex;
   flex: 1 0 auto;
@@ -25,62 +16,45 @@ const ContainerOuterWrapper = styled.div`
   height: 100%;
   justify-content: center;
   margin: 0;
-  padding: 0;
+  padding: 30px;
 `;
 
-const ContainerInnerWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-  width: 900px;
-`;
-
-const LoginSuccessCheck = styled.div`
-  color: #7dd322;
-  display: flex;
-`;
-
-const StyledActionButton = styled(StyledButton)`
+const LogOutButton = styled.button`
+  background-color: white;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 18px;
+  outline: none;
+  padding: 10px 20px;
   position: absolute;
   right: 50px;
+  text-align: center;
+  text-decoration: none;
   top: 50px;
+  white-space: nowrap;
 `;
 
-/*
- * types
- */
+const AppContainer = () => {
 
-type ActionProps = {|
-  actions :{|
-    logout :() => void;
-  |};
-|};
+  const dispatch = useDispatch();
 
-type Props = {|
-  ...ActionProps;
-|};
+  const logout = useCallback(() => {
+    dispatch(AuthActions.logout());
+  }, [dispatch]);
 
-const AppContainer = ({ actions } :Props) => (
-  <ContainerOuterWrapper>
-    <ContainerInnerWrapper>
-      <StyledActionButton onClick={actions.logout}>
-        Logout
-      </StyledActionButton>
-      <LoginSuccessCheck>
-        <FontAwesomeIcon icon={faCheckCircle} size="4x" />
-      </LoginSuccessCheck>
+  return (
+    <ContainerWrapper>
+      <LogOutButton onClick={logout}>
+        Log Out
+      </LogOutButton>
       <p>
         Success! You are logged in to OpenLattice.
       </p>
-    </ContainerInnerWrapper>
-  </ContainerOuterWrapper>
-);
+    </ContainerWrapper>
+  );
+};
 
-const mapDispatchToProps = (dispatch :Function) :ActionProps => ({
-  actions: bindActionCreators({
-    logout: AuthActions.logout,
-  }, dispatch)
-});
-
-export default connect<Props, {||}, {||}, ActionProps, _, _>(null, mapDispatchToProps)(AppContainer);
+export default AppContainer;

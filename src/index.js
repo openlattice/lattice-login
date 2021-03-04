@@ -7,7 +7,6 @@ import ReactDOM from 'react-dom';
 
 import LatticeAuth from 'lattice-auth';
 import { ConnectedRouter } from 'connected-react-router/immutable';
-import { normalize } from 'polished';
 import { Provider } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 
@@ -26,20 +25,20 @@ const {
   AuthUtils
 } = LatticeAuth;
 
-/* eslint-disable */
-const NormalizeCSS = createGlobalStyle`
-  ${normalize()}
-`;
-
-// TODO: move styling into core/style
-// TODO: define style defaults and themes
 const GlobalStyle = createGlobalStyle`
+  @supports (font-variation-settings: normal) {
+    html {
+      font-family: 'Inter', sans-serif;
+    }
+  }
+
   html,
   body {
-    background-color: #f9fcff;
-    color: #135;
-    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+    color: #3c3c40;
+    font-family: 'Inter', sans-serif;
     height: 100%;
+    line-height: 1.5;
     width: 100%;
   }
 
@@ -58,7 +57,6 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 `;
-/* eslint-enable */
 
 /*
  * !!! MUST HAPPEN FIRST !!!
@@ -85,7 +83,6 @@ if (APP_ROOT_NODE) {
         <ConnectedRouter history={routerHistory}>
           <AuthRoute path={Routes.ROOT} component={AppContainer} />
         </ConnectedRouter>
-        <NormalizeCSS />
         <GlobalStyle />
       </>
     </Provider>,
