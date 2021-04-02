@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 const JSDOMEnvironment = require('jest-environment-jsdom');
 
 // https://github.com/facebook/jest/issues/5124
