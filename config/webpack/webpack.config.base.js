@@ -1,16 +1,22 @@
-/* eslint-disable no-underscore-dangle, import/extensions */
+/* eslint-disable import/extensions, import/no-extraneous-dependencies */
 
 const path = require('path');
 const Webpack = require('webpack');
 
-const APP_CONFIG = require('../app/app.config.js');
-const APP_PATHS = require('../app/paths.config.js');
 const PACKAGE = require('../../package.json');
 const {
   AUTH0_CLIENT_ID_DEV,
   AUTH0_CLIENT_ID_PROD,
   AUTH0_DOMAIN,
 } = require('../auth/auth0.config.js');
+
+const BANNER = `
+${PACKAGE.name} - v${PACKAGE.version}
+${PACKAGE.description}
+${PACKAGE.homepage}
+
+Copyright (c) 2017-${(new Date()).getFullYear()}, OpenLattice, Inc. All rights reserved.
+`;
 
 module.exports = (env) => {
 
@@ -23,6 +29,11 @@ module.exports = (env) => {
   const ENV_DEV = 'development';
   const ENV_PROD = 'production';
 
+  const ROOT = path.resolve(__dirname, '../..');
+  const BUILD = path.resolve(ROOT, 'build');
+  const NODE = path.resolve(ROOT, 'node_modules');
+  const SOURCE = path.resolve(ROOT, 'src');
+
   //
   // loaders
   //
@@ -31,7 +42,7 @@ module.exports = (env) => {
     test: /\.js$/,
     exclude: /node_modules/,
     include: [
-      APP_PATHS.ABS.SOURCE,
+      SOURCE,
     ],
     use: {
       loader: 'babel-loader',
@@ -46,7 +57,7 @@ module.exports = (env) => {
   //
 
   const BANNER_PLUGIN = new Webpack.BannerPlugin({
-    banner: APP_CONFIG.BANNER,
+    banner: BANNER,
     entryOnly: true,
   });
 
@@ -67,8 +78,7 @@ module.exports = (env) => {
   return {
     bail: true,
     entry: [
-      '@babel/polyfill',
-      APP_PATHS.ABS.APP,
+      path.resolve(ROOT, 'src/index.js'),
     ],
     mode: env.production ? ENV_PROD : ENV_DEV,
     module: {
@@ -78,8 +88,8 @@ module.exports = (env) => {
           generator: {
             filename: (
               env.production
-                ? `${APP_PATHS.REL.STATIC_ASSETS}/[name].[contenthash].[ext]`
-                : `${APP_PATHS.REL.STATIC_ASSETS}/[name].[ext]`
+                ? 'static/assets/[name].[contenthash][ext]'
+                : 'static/assets/[name][ext]'
             )
           },
           test: /\.(gif|ico|jpg|jpeg|png|svg|webp)(\?.*)?$/,
@@ -91,7 +101,7 @@ module.exports = (env) => {
       minimize: !!env.production,
     },
     output: {
-      path: APP_PATHS.ABS.BUILD,
+      path: BUILD,
       publicPath: BASE_PATH,
     },
     performance: {
@@ -104,8 +114,8 @@ module.exports = (env) => {
     resolve: {
       extensions: ['.js', '.css'],
       modules: [
-        APP_PATHS.ABS.SOURCE,
-        APP_PATHS.ABS.NODE,
+        SOURCE,
+        NODE,
       ],
     },
   };
