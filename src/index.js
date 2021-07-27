@@ -56,6 +56,10 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
   }
+
+  .auth0-lock.auth0-lock .auth0-lock-name {
+    font-size: 12px;
+  }
 `;
 
 /*
@@ -66,6 +70,9 @@ LatticeAuth.configure({
   auth0ClientId: __AUTH0_CLIENT_ID__,
   auth0Domain: __AUTH0_DOMAIN__,
   authToken: AuthUtils.getAuthToken(),
+  auth0Lock: {
+    title: 'Please ensure 3rd party cookies are enabled'
+  }
 });
 
 /*
