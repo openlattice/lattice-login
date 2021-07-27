@@ -71,7 +71,7 @@ LatticeAuth.configure({
   auth0Domain: __AUTH0_DOMAIN__,
   authToken: AuthUtils.getAuthToken(),
   auth0Lock: {
-    title: 'Please ensure 3rd party cookies are enabled'
+    title: 'Please ensure third-party cookies are enabled'
   }
 });
 
