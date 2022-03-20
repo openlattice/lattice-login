@@ -29,7 +29,7 @@
     "history": "~4.10.0",
     "immutable": "4.0.0-rc.10",
     "lattice": "~0.97.0",
-    "lattice-auth": "~0.28.0",
+    "lattice-auth": "~0.29.0",
     "luxon": "~2.3.0",
     "react": "~16.14.0",
     "react-dom": "~16.14.0",
